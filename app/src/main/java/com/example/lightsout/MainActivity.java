@@ -117,4 +117,15 @@ public class MainActivity extends AppCompatActivity {
         scoreTV.setText(getString(R.string.score,  countLightsOn()));
     }
 
+    private void resetGame()
+    {
+        for (int r = 0; r < GRID_SIZE; r++)
+        {
+            for (int c = 0; c < GRID_SIZE; c++)
+            {
+                cellState[r][c] = false;
+            }
+        }
+    }
+
    }
