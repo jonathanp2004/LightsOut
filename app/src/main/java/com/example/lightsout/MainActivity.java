@@ -63,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
 
         updateScore();
 
+        Button resetButton = findViewById(R.id.resetButton);
+        resetButton.setOnClickListener(view -> {
+            resetGame();
+            recolor();
+            updateScore();
+        });
+
         Toast.makeText(this, "Initial lights on: " + countLightsOn(), Toast.LENGTH_SHORT).show();
 
 
