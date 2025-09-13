@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             recolor();
+            updateScore();
             Toast.makeText(MainActivity.this, "Lights on: " + countLightsOn(), Toast.LENGTH_SHORT).show();
 
         }
@@ -58,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         randomize();
 
         recolor();
+
+        updateScore();
 
         Toast.makeText(this, "Initial lights on: " + countLightsOn(), Toast.LENGTH_SHORT).show();
 
@@ -105,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return count;
+    }
+
+    private void updateScore()
+    {
+        TextView scoreTV = findViewById(R.id.tvScore);
+        scoreTV.setText(getString(R.string.score,  countLightsOn()));
     }
 
    }

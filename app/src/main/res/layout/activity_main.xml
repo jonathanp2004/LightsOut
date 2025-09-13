@@ -68,7 +68,7 @@
         android:layout_margin="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/score_fmt"
+        android:text="@string/score"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -77,8 +77,10 @@
         android:id="@+id/lightoffButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="128dp"
         android:text="Lights Off"
-        tools:layout_editor_absoluteX="231dp"
-        tools:layout_editor_absoluteY="555dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/resetButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
