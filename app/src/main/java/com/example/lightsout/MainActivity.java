@@ -6,14 +6,45 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.util.Random;
+
 
 public class MainActivity extends AppCompatActivity {
 
     public static final int GRID_SIZE = 3;
     private GridLayout grid;
     private boolean cellState [][];
+    private static final String TAG = "LightsOut";
+
+
+    View.OnClickListener buttonClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Button current = (Button) view;
+
+            for (int i = 0; i < grid.getChildCount(); i++) {
+                Button gridButton = (Button) grid.getChildAt(i);
+
+                if (gridButton == current) {
+                    int row = i / GRID_SIZE;
+                    int col = i % GRID_SIZE;
+
+                    cellState[row][col] = !cellState[row][col];
+
+                }
+            }
+            recolor();
+            Toast.makeText(MainActivity.this, "Lights on: " + countLightsOn(), Toast.LENGTH_SHORT).show();
+
+        }
+        };
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +55,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         grid = findViewById(R.id.light_grid);
 
-//      randomize();
+        randomize();
 
         recolor();
+
+        Toast.makeText(this, "Initial lights on: " + countLightsOn(), Toast.LENGTH_SHORT).show();
+
+
+
+
+        for (int i = 0; i < grid.getChildCount(); i++) {
+            Button gridButton = (Button) grid.getChildAt(i);
+            gridButton.setOnClickListener(buttonClickListener);
+        }
     }
 
     public void recolor(){
@@ -37,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
             int row = i / GRID_SIZE;
             int col = i % GRID_SIZE;
 
-            if (cellState[row][col] == true) {
-                gridButton.setBackgroundColor(getColor(R.color.blue_500));
+            if (cellState[row][col]) {
+                gridButton.setBackgroundColor(getColor(R.color.steelblue));//Light on
             } else {
-                gridButton.setBackgroundColor(getColor(R.color.black));
+                gridButton.setBackgroundColor(getColor(R.color.black));//Lights off
             }
         }
     }
@@ -53,7 +94,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    private int countLightsOn()
+    {
+        int count =0;
+        for(int i =0; i< GRID_SIZE; i++){
+            for(int j =0; j< GRID_SIZE; j++){
+                if(cellState[i][j]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
 
-
-
-}
+   }
