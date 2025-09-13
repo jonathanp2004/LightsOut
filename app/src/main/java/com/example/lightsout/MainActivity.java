@@ -68,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
             resetGame();
             recolor();
             updateScore();
+
+
+            Button randomizeButton = findViewById(R.id.randomButton);
+            randomizeButton.setOnClickListener(view1 -> {
+                randomize();
+                recolor();
+                updateScore();
+            });
         });
 
         Toast.makeText(this, "Initial lights on: " + countLightsOn(), Toast.LENGTH_SHORT).show();

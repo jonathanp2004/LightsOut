@@ -55,11 +55,13 @@
         android:id="@+id/resetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="73dp"
         android:layout_marginEnd="288dp"
         android:layout_marginBottom="128dp"
         android:text="@string/reset"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/light_grid" />
 
     <TextView
         android:id="@+id/tvScore"
@@ -78,17 +80,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="73dp"
         android:layout_marginBottom="128dp"
         android:text="Lights Off"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/resetButton" />
+        app:layout_constraintStart_toEndOf="@+id/resetButton"
+        app:layout_constraintTop_toBottomOf="@+id/light_grid" />
 
     <Button
         android:id="@+id/randomButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="278dp"
-        tools:layout_editor_absoluteY="553dp" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="130dp"
+        android:text="Random"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lightoffButton"
+        app:layout_constraintTop_toBottomOf="@+id/light_grid" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
